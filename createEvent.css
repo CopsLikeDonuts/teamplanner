@@ -1,0 +1,91 @@
+#error-bar{
+    height: 80px;
+    background-color: #FFCACA;
+    display: flex;
+    position: relative;
+}
+
+#error-bar img{
+    width: 70px;
+    height: 70px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+#error-message{
+    margin-left: 20px;
+    margin-top: 23px;
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+    
+}
+
+#error-close{
+    position: absolute;
+    color: red;
+    right: 1%;
+    top: 3%;
+    cursor: pointer;
+    font-size: 30px;
+    transform: rotate(45deg);
+}
+
+
+#create-event-header{
+    font-size: 40px;
+    text-align: center;
+}
+
+.add-event-page{
+    margin: 0 auto;
+    width: 600px;
+    background-color: #ccc;
+    font-size: 24px;
+}
+
+
+.event-property {
+    margin-top: 20px;
+    
+}
+
+.participants {
+    display: flex;
+}
+
+.select-participants {
+    width: 200px;
+    
+  }
+  
+  #select-box {
+    position: relative;
+    
+  }
+
+  #select-box select {
+    width: 100%;
+    font-weight: bold;
+  }
+  
+  .over-select {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  #checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+  }
+  
+  #checkboxes label {
+    display: block;
+  }
+  
+  #checkboxes label:hover {
+    background-color: #1e90ff;
+  }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='createEvent.css'>
+    <title>Create event</title>
+</head>
+<body>
+    <div id='error-bar'>
+        <img src='./images/error.png' alt='error'>
+        <span id='error-message'>Failed to create an event. Time slot is already booked.</span>
+        <span id='error-close'>+</span>
+    </div>
+    <h1 id='create-event-header'>Create event</h1>
+    <div class='add-event-page event-property'>
+        
+        <div class='event-property'>
+            <span class='create-event-tabs'>Name of the event:</span>
+            <input type='text' placeholder='Event name'/>
+        </div>
+        <div class='event-property participants'>
+            
+            <span class='create-event-tabs'>
+                Participants:
+            </span>
+            <form>
+                <div class="select-participants">
+                    <div id="select-box">
+                    <select>
+                        <option id='selector-header'>Select an option</option>
+                    </select>
+                    <div class="over-select"></div>
+                    </div>
+                    <div id="checkboxes">
+                    <label for="one">
+                        <input type="checkbox" id="one" />Necr</label>
+                    <label for="two">
+                        <input type="checkbox" id="two" />Sorc</label>
+                    <label for="three">
+                        <input type="checkbox" id="three" />SB</label>
+                    </div>
+                </div>
+                </form>
+            
+            
+        </div>
+        <div class='event-property'>
+            <span class='create-event-tabs'>
+                Day:
+            </span>
+            <select class='event-create-dropdown'>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+            </select>
+        </div>
+        <div class='event-property'>
+            <span class='create-event-tabs'>Time:</span>
+            <select class='event-create-dropdown'>
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
+                <option>13:00</option>
+                <option>14:00</option>
+                <option>15:00</option>
+                <option>16:00</option>
+                <option>17:00</option>
+                <option>18:00</option>
+            </select>
+        </div>
+        <div class='event-property'>
+            <button>Cancel</button>
+            <button>Create</button>
+        </div>
+    </div>
+    
+</body>
+</html>

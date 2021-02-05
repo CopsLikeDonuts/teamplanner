@@ -1,0 +1,121 @@
+
+
+#content {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header>div{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+#header>select{
+    margin-left: 500px;
+}
+
+#table{
+    margin-top: 10px;
+    
+}
+
+#table>table {
+    width: 100%;
+    border-spacing: 0;
+    border: 1px solid black;
+}
+
+tr, th, td {
+    width: 164px;
+    height: 50px;
+    background-color: #cccc11;
+    border: 1px solid black;
+    margin: 0;
+    text-align: center;
+    
+}
+
+.table-header{
+    background-color: #ccc;
+    border: 1px solid black;
+    font-size: 20px;
+    font-weight: bold; 
+    text-align: center;
+}
+
+.busy-slot {
+    position: relative;
+    background-color: green;
+}
+
+.delete-icon{
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    transform: rotate(45deg);
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    left: 20%;
+    top: 30%;
+    width: 60%;
+    height: 40%;
+    border: 1px solid black;
+    background-color: #fff;
+    text-align: center;
+    
+    
+}
+
+.modal-dialog-header {
+    position: relative;
+}
+
+
+.modal-btn-no{
+    color: #000;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    left: 300px;
+    width: 65px;
+}
+
+.modal-dialog-message{    
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 7em;
+    
+}
+
+.modal-btn-yes{
+    color: #000;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 300px;
+    width: 65px;
+}
+
+
+
+
+
+
+
+
+
