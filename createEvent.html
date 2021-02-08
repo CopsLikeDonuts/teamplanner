@@ -18,7 +18,7 @@
         
         <div class='event-property'>
             <span class='create-event-tabs'>Name of the event:</span>
-            <input type='text' placeholder='Event name'/>
+            <input type='text' placeholder='Event name' class='create-event-input'/>
         </div>
         <div class='event-property participants'>
             
@@ -27,11 +27,11 @@
             </span>
             <form>
                 <div class="select-participants">
-                    <div id="select-box">
-                    <select>
-                        <option id='selector-header'>Select an option</option>
-                    </select>
-                    <div class="over-select"></div>
+                    <div class="select-box create-event-input">
+                        <select>
+                            <option id='selector-header'>Select an option</option>
+                        </select>
+                        <div class="over-select"></div>
                     </div>
                     <div id="checkboxes">
                     <label for="one">
@@ -50,7 +50,7 @@
             <span class='create-event-tabs'>
                 Day:
             </span>
-            <select class='event-create-dropdown'>
+            <select class='event-create-dropdown  create-event-input'>
                 <option>Monday</option>
                 <option>Tuesday</option>
                 <option>Wednesday</option>
@@ -58,9 +58,9 @@
                 <option>Friday</option>
             </select>
         </div>
-        <div class='event-property'>
+        <div class='event-property '>
             <span class='create-event-tabs'>Time:</span>
-            <select class='event-create-dropdown'>
+            <select class='event-create-dropdown create-event-input'>
                 <option>10:00</option>
                 <option>11:00</option>
                 <option>12:00</option>
@@ -72,9 +72,9 @@
                 <option>18:00</option>
             </select>
         </div>
-        <div class='event-property'>
-            <button>Cancel</button>
-            <button>Create</button>
+        <div class='event-property event-create-btns'>
+            <button class='event-create-btn'>Cancel</button>
+            <button class='event-create-btn'>Create</button>
         </div>
     </div>
     

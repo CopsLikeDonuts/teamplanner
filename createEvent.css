@@ -38,9 +38,9 @@
 }
 
 .add-event-page{
+  position: relative;
     margin: 0 auto;
-    width: 600px;
-    background-color: #ccc;
+    width: 400px;
     font-size: 24px;
 }
 
@@ -59,12 +59,12 @@
     
   }
   
-  #select-box {
+  .select-box {
     position: relative;
     
   }
 
-  #select-box select {
+  .select-box select {
     width: 100%;
     font-weight: bold;
   }
@@ -89,3 +89,20 @@
   #checkboxes label:hover {
     background-color: #1e90ff;
   }
+
+.create-event-input{
+  position: absolute;
+  right: 0;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.event-create-btns{
+  display: flex;
+  justify-content: center;
+}
+
+.event-create-btn{
+  margin-left: 20px;
+  font-size: 20px;
+}
