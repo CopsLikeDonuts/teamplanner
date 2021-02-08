@@ -1,6 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
+        const content = document.getElementById('content');
+        const header = document.createElement('div');
+        header.id = 'header';
+        content.appendChild(header);
 
-    const header = document.getElementById('header');
+        const weekPlan = document.createElement('div');
+        weekPlan.id = 'table';
+        content.appendChild(weekPlan);         
+    
+    
 
     function renderHeader() {
         header.innerHTML = `<div>Calendar</div>
@@ -14,10 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const headerData = [' ', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
     const timeSlots = ['10:00', '11:00', '12:00', '13:00', '14:00',
-                    '15:00', '16:00', '17:00', '18:00'];         
-    const weekPlan = document.getElementById('table');
+                    '15:00', '16:00', '17:00', '18:00'];
     const teamSelector = document.getElementById('team');
-    const addEventBtn = document.getElementById('new-event');
 
 
     let obj = {
@@ -173,28 +178,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     renderEvents();
 
-    let expanded = false;
-    let selectParticipants = document.getElementById('select-box');
-    function showCheckboxes() {
-        let checkboxes = document.getElementById("checkboxes");
-        if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
-        } else {
-            checkboxes.style.display = "none";
-            expanded = false;
-        }
-    }
-    selectParticipants.addEventListener('click', showCheckboxes);
+    // let expanded = false;
+    // let selectParticipants = document.getElementsByClassName('select-box');
+    // function showCheckboxes() {
+    //     let checkboxes = document.getElementById("checkboxes");
+    //     if (!expanded) {
+    //         checkboxes.style.display = "block";
+    //         expanded = true;
+    //     } else {
+    //         checkboxes.style.display = "none";
+    //         expanded = false;
+    //     }
+    // }
+    // selectParticipants.addEventListener('click', showCheckboxes);
 
 
     function createModalWindow() {
         
     }
 
+    const addEventBtn = document.getElementById('new-event');
+    
+
     addEventBtn.addEventListener('click', (e) => {
         e.preventDefault();
         let myURL = 'http://127.0.0.1:5500/'
-        window.history.pushState(null, null, 'create-event');
+        // window.history.pushState(null, null, 'create-event');
+        location.href = location.origin + '#create-event';
+        content.innerHTML = '';
+        content.innerHTML = `
+            <h3>Hello</h3>
+        `
+        setTimeout(function () {
+            location.href = location.origin;
+        }, 3000);
+        
+      
     });
-});
+
+
