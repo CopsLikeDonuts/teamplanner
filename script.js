@@ -142,6 +142,7 @@
                             timeslot.classList.add('busy-slot');
                             
                             deleteIcon.addEventListener('click', (e) => {
+                                createModalWindow(e.target.parentNode.value);
                                 for (i = events.length -1; i >= 0; i--){
                                     if (events[i].id === currUser.data[e.target.parentNode.parentNode.rowIndex -1][e.target.parentNode.cellIndex -1].id) {
                                         events.splice(events.indexOf(events.find(event => event.id === currUser.data[e.target.parentNode.parentNode.rowIndex -1][e.target.parentNode.cellIndex -1].id)), 1);
@@ -193,9 +194,24 @@
     // selectParticipants.addEventListener('click', showCheckboxes);
 
 
-    function createModalWindow() {
-        
+    function createModalWindow(event) {
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        modal.innerHTML = `
+            <div class="modal-dialog-header">
+                <span class='delete-icon'>+</span>
+            </div>
+            <div class='modal-dialog-message'>
+                <span>Are you sure to delete ${event}</span>
+            </div>
+            <div class='modal-dialog-buttons'>
+                <button class='modal-btn-no'>No</button>
+                <button class='modal-btn-yes'>Yes</button>
+            </div>
+        `;
+        content.appendChild(modal);
     }
+    
 
     const addEventBtn = document.getElementById('new-event');
     

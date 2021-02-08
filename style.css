@@ -65,7 +65,7 @@ tr, th, td {
 }
 
 .modal {
-    display: none;
+    
     position: fixed;
     z-index: 5;
     left: 20%;
