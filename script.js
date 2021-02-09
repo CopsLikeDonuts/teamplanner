@@ -1,11 +1,11 @@
-        const content = document.getElementById('content');
-        const header = document.createElement('div');
-        header.id = 'header';
-        content.appendChild(header);
+    const content = document.getElementById('content');
+    const header = document.createElement('div');
+    header.id = 'header';
+    content.appendChild(header);
 
-        const weekPlan = document.createElement('div');
-        weekPlan.id = 'table';
-        content.appendChild(weekPlan);         
+    const weekPlan = document.createElement('div');
+    weekPlan.id = 'table';
+    content.appendChild(weekPlan);         
     
     
 
@@ -108,6 +108,39 @@
         })
     });
 
+    function renderModalWindow() {
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        modal.innerHTML = `
+            <div class='modal-dialog'>
+                <div id='modal-content'>
+                    <img src='./images/Close-icon.png' class='delete-icon' data-close></img>
+                    <div class='modal-dialog-message'>
+                        <span id='modal-text'></span>
+                    </div>
+                    <div class='modal-dialog-buttons'>
+                        <button id='modal-btn-yes'>Yes</button>
+                        <button id='modal-btn-no' data-close>No</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        content.appendChild(modal);
+    }
+    renderModalWindow();
+
+    const modalWindow = document.querySelector('.modal');
+
+    const closebtn = document.querySelectorAll('[data-close]');
+    closebtn.forEach(btn => {
+        btn.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Escape' && modalWindow.classList.contains('show')) {
+            closeModal();
+        }
+    });
 
     function renderTable(user) {
         weekPlan.innerHTML = null;
@@ -135,22 +168,30 @@
                     if (user) {
                         timeslot.innerText = user.data[timeSlots.indexOf(slot)][i - 1]['desc'] ? user.data[timeSlots.indexOf(slot)][i - 1]['desc']: ''
                         if (timeslot.innerText != '') {
-                            let deleteIcon = document.createElement('span');
-                            deleteIcon.innerText = '+';
+                            let deleteIcon = document.createElement('img');
+                            deleteIcon.src = './images/Close-icon.png';
                             deleteIcon.classList.add('delete-icon');
                             timeslot.appendChild(deleteIcon);
                             timeslot.classList.add('busy-slot');
                             
                             deleteIcon.addEventListener('click', (e) => {
-                                createModalWindow(e.target.parentNode.value);
-                                for (i = events.length -1; i >= 0; i--){
-                                    if (events[i].id === currUser.data[e.target.parentNode.parentNode.rowIndex -1][e.target.parentNode.cellIndex -1].id) {
-                                        events.splice(events.indexOf(events.find(event => event.id === currUser.data[e.target.parentNode.parentNode.rowIndex -1][e.target.parentNode.cellIndex -1].id)), 1);
+                                
+                                openModal(e.target.parentNode.innerText);
+                                const evDeleteConfirmBtn = document.getElementById('modal-btn-yes');
+                                
+                                evDeleteConfirmBtn.addEventListener('click', () => {
+                                    for (i = events.length -1; i >= 0; i--){
+                                        if (events[i].id === currUser.data[e.target.parentNode.parentNode.rowIndex -1][e.target.parentNode.cellIndex -1].id) {
+                                            events.splice(events.indexOf(events.find(event => event.id === currUser.data[e.target.parentNode.parentNode.rowIndex -1][e.target.parentNode.cellIndex -1].id)), 1);
+                                        }
                                     }
-                                }
-                                setDefaultDate();
-                                renderEvents();
-                                renderTable(currUser);
+                                    closeModal();
+                                    setDefaultDate();
+                                    renderEvents();
+                                    renderTable(currUser);
+                                });
+                                
+                                
                             });
                         }
                     }
@@ -179,6 +220,8 @@
     }
     renderEvents();
 
+
+
     // let expanded = false;
     // let selectParticipants = document.getElementsByClassName('select-box');
     // function showCheckboxes() {
@@ -193,24 +236,25 @@
     // }
     // selectParticipants.addEventListener('click', showCheckboxes);
 
-
-    function createModalWindow(event) {
-        const modal = document.createElement('div');
-        modal.classList.add('modal');
-        modal.innerHTML = `
-            <div class="modal-dialog-header">
-                <span class='delete-icon'>+</span>
-            </div>
-            <div class='modal-dialog-message'>
-                <span>Are you sure to delete ${event}</span>
-            </div>
-            <div class='modal-dialog-buttons'>
-                <button class='modal-btn-no'>No</button>
-                <button class='modal-btn-yes'>Yes</button>
-            </div>
-        `;
-        content.appendChild(modal);
+    function closeModal(){
+        modalWindow.classList.add('hide');
+        modalWindow.classList.remove('show');
+        document.body.style.overflow = '';
     }
+
+    function openModal(eventName) {
+        const modalText = document.getElementById('modal-text');
+        modalText.innerText = `Are you sure to delete ${eventName} event?`
+        modalWindow.classList.add('show');
+        modalWindow.classList.remove('hide');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function modal() {
+        const modalWindow = document.getElementsByClassName('modal');
+    }
+
+
     
 
     const addEventBtn = document.getElementById('new-event');

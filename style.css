@@ -55,28 +55,44 @@ tr, th, td {
 
 .delete-icon{
     position: absolute;
-    top: 0px;
-    right: 5px;
-    transform: rotate(45deg);
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
+    top: 3px;
+    right: 3px;
+    width: 12px;
+    height: 12px;
     cursor: pointer;
 }
 
-.modal {
-    
+.modal {   
     position: fixed;
-    z-index: 5;
-    left: 20%;
-    top: 30%;
-    width: 60%;
-    height: 40%;
-    border: 1px solid black;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .5);  
+}
+
+.modal-dialog {
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+#modal-content {
+    position: relative;
+    width: 100%;
+    padding: 40px;
     background-color: #fff;
-    text-align: center;
-    
-    
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 4px;
+    max-height: 80vh;
+    overflow-y: auto
+}
+
+.modal-content img {
+    padding-top: 50px;
+    padding-right: 50px;
 }
 
 .modal-dialog-header {
@@ -84,7 +100,7 @@ tr, th, td {
 }
 
 
-.modal-btn-no{
+#modal-btn-no{
     color: #000;
     font-size: 30px;
     cursor: pointer;
@@ -101,7 +117,7 @@ tr, th, td {
     
 }
 
-.modal-btn-yes{
+#modal-btn-yes{
     color: #000;
     font-size: 30px;
     cursor: pointer;
@@ -109,6 +125,14 @@ tr, th, td {
     bottom: 20px;
     right: 300px;
     width: 65px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
 }
 
 
