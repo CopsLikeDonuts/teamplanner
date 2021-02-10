@@ -135,6 +135,136 @@ tr, th, td {
     display: none;
 }
 
+#error-bar{
+    height: 80px;
+    background-color: #FFCACA;
+    display: none;
+    position: relative;
+    
+}
+
+#error-bar img{
+    width: 70px;
+    height: 70px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+#error-message{
+    margin-left: 20px;
+    margin-top: 23px;
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+    
+}
+
+#error-close{
+    position: absolute;
+    color: red;
+    right: 1%;
+    top: 3%;
+    cursor: pointer;
+    font-size: 30px;
+    transform: rotate(45deg);
+}
+
+
+#create-event-header{
+    font-size: 40px;
+    text-align: center;
+}
+
+.add-event-page{
+  position: relative;
+    margin: 0 auto;
+    width: 400px;
+    font-size: 24px;
+}
+
+
+.event-property {
+    position: relative;
+    margin-top: 20px;
+    
+}
+
+.event-property form{
+    position: absolute;
+    right: 0px;
+    
+}
+
+.participants {
+    display: flex;
+}
+
+.select-participants {
+    position: relative;
+    width: 120px;
+    
+    
+  }
+  
+  #select-box {
+    position: absolute;
+    right: 0px;
+    
+  }
+
+  .select-box select {
+    
+    width: 100%;
+    font-weight: bold;
+  }
+  
+  .over-select {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  #checkboxes {
+    position: absolute;
+    display: none;
+    border: 1px #dadada solid;
+    background-color: #fff;
+    z-index: 10;
+    top: 24px;
+    width: 120px;
+  }
+  
+  #checkboxes label {
+    display: block;
+    font-size: 15px;
+  }
+  #checkboxes hr {
+    margin: 0;
+  }
+  
+  #checkboxes label:hover {
+    background-color: #1e90ff;
+  }
+
+.create-event-input{
+  position: absolute;
+  right: 0;
+  font-size: 15px;
+  margin-top: 5px;
+  z-index: 5;
+}
+
+.event-create-btns{
+  display: flex;
+  justify-content: center;
+}
+
+.event-create-btn{
+  margin-left: 20px;
+  font-size: 20px;
+}
 
 
 

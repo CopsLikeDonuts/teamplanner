@@ -221,20 +221,22 @@
     renderEvents();
 
 
-
-    // let expanded = false;
-    // let selectParticipants = document.getElementsByClassName('select-box');
-    // function showCheckboxes() {
-    //     let checkboxes = document.getElementById("checkboxes");
-    //     if (!expanded) {
-    //         checkboxes.style.display = "block";
-    //         expanded = true;
-    //     } else {
-    //         checkboxes.style.display = "none";
-    //         expanded = false;
-    //     }
-    // }
-    // selectParticipants.addEventListener('click', showCheckboxes);
+    function displayParticipants() {
+        let expanded = false;
+        let selectParticipants = document.getElementById('select-box');
+        function showCheckboxes() {
+            let checkboxes = document.getElementById("checkboxes");
+            if (!expanded) {
+                checkboxes.style.display = "block";
+                expanded = true;
+            } else {
+                checkboxes.style.display = "none";
+                expanded = false;
+            }
+        }
+        selectParticipants.addEventListener('click', showCheckboxes);
+    }
+    
 
     function closeModal(){
         modalWindow.classList.add('hide');
@@ -250,30 +252,103 @@
         document.body.style.overflow = 'hidden';
     }
 
-    function modal() {
-        const modalWindow = document.getElementsByClassName('modal');
-    }
-
-
-    
-
     const addEventBtn = document.getElementById('new-event');
     
 
-    addEventBtn.addEventListener('click', (e) => {
-        e.preventDefault();
+    addEventBtn.addEventListener('click', () => {
+        
         let myURL = 'http://127.0.0.1:5500/'
-        // window.history.pushState(null, null, 'create-event');
+        
         location.href = location.origin + '#create-event';
         content.innerHTML = '';
         content.innerHTML = `
-            <h3>Hello</h3>
-        `
-        setTimeout(function () {
-            location.href = location.origin;
-        }, 3000);
+            <div id='error-bar'>
+        <img src='./images/error.png' alt='error'>
+        <span id='error-message'>Failed to create an event. Time slot is already booked.</span>
+        <span id='error-close'>+</span>
+    </div>
+    <h1 id='create-event-header'>Create event</h1>
+    <div class='add-event-page event-property'>
         
-      
+        <div class='event-property'>
+            <span class='create-event-tabs'>Name of the event:</span>
+            <input type='text' placeholder='Event name' id='event-name' class='create-event-input'/>
+        </div>
+        <div class='event-property participants'>
+            
+            <span class='create-event-tabs'>
+                Participants:
+            </span>
+            <form id='event-create-form'>
+                <div class="select-participants">
+                    <div id="select-box" class="create-event-input">
+                        <select>
+                            <option id='selector-header'>Select an option</option>
+                        </select>
+                        <div class="over-select"></div>
+                    </div>
+                    <div id="checkboxes">
+                    <label for="one">
+                        <input type="checkbox" id="one" />Necr</label><hr>
+                    <label for="two">
+                        <input type="checkbox" id="two" />Sorc</label><hr>
+                    <label for="three">
+                        <input type="checkbox" id="three" />SB</label>
+                    </div>
+                </div>
+                </form>
+            
+            
+        </div>
+        <div class='event-property'>
+            <span class='create-event-tabs'>
+                Day:
+            </span>
+            <select class='event-create-dropdown  create-event-input' id='event-day'>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+            </select>
+        </div>
+        <div class='event-property '>
+            <span class='create-event-tabs'>Time:</span>
+            <select class='event-create-dropdown create-event-input' id='event-time'>
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
+                <option>13:00</option>
+                <option>14:00</option>
+                <option>15:00</option>
+                <option>16:00</option>
+                <option>17:00</option>
+                <option>18:00</option>
+            </select>
+        </div>
+        <div class='event-property event-create-btns'>
+            <button class='event-create-btn' id='event-cancel-btn'>Cancel</button>
+            <input type='submit' value='Create' class='event-create-btn' id='event-create-btn'></input>
+        </div>
+    </div>
+        `
+    displayParticipants();
+    cancelEvCreation();
+    const createBtn = document.getElementById('event-create-btn');
+    createBtn.addEventListener('click', createEvent);
+    
     });
+
+    function cancelEvCreation(){
+        const cancelBtn = document.getElementById('event-cancel-btn');
+        
+    }
+
+    function createEvent() {
+        const evName = document.getElementById('event-name');
+        const evDay = document.getElementById('event-day');
+        const evTime = document.getElementById('event-time');
+        console.log(evName.value, evDay.value, evTime.value);
+    }
 
 
