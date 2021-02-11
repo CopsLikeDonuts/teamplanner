@@ -7,8 +7,6 @@
     weekPlan.id = 'table';
     content.appendChild(weekPlan);         
     
-    
-
     function renderHeader() {
         header.innerHTML = `<div>Calendar</div>
         <select id='team'></select>
@@ -229,13 +227,27 @@
             if (!expanded) {
                 checkboxes.style.display = "block";
                 expanded = true;
+
             } else {
                 checkboxes.style.display = "none";
                 expanded = false;
+                getSelectedMembers();
             }
         }
         selectParticipants.addEventListener('click', showCheckboxes);
+        
     }
+
+    function getSelectedMembers(){
+        const selector = document.getElementById('selector-header')
+        const checkboxes = document.getElementsByClassName('user-checkbox');
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked){
+                selector.innerText = checkboxes[i].parentNode.innerText;
+            }
+        }
+    }
+    
     
 
     function closeModal(){
@@ -288,12 +300,12 @@
                         <div class="over-select"></div>
                     </div>
                     <div id="checkboxes">
-                    <label for="one">
-                        <input type="checkbox" id="one" />Necr</label><hr>
-                    <label for="two">
-                        <input type="checkbox" id="two" />Sorc</label><hr>
-                    <label for="three">
-                        <input type="checkbox" id="three" />SB</label>
+                        <div class='user'>
+                            <input type="checkbox" class='user-checkbox'/>Necr</div><hr>
+                        <div class='user'>
+                            <input type="checkbox" class='user-checkbox'/>Sorc</div><hr>
+                        <div class='user'>
+                            <input type="checkbox" class='user-checkbox'/>SB</div>
                     </div>
                 </div>
                 </form>
@@ -333,22 +345,30 @@
     </div>
         `
     displayParticipants();
-    cancelEvCreation();
     const createBtn = document.getElementById('event-create-btn');
+    const cancelBtn = document.getElementById('event-cancel-btn');
     createBtn.addEventListener('click', createEvent);
-    
+    cancelBtn.addEventListener('click', cancelEvCreation);
     });
 
     function cancelEvCreation(){
-        const cancelBtn = document.getElementById('event-cancel-btn');
-        
+        location.href = location.origin;
     }
 
     function createEvent() {
         const evName = document.getElementById('event-name');
         const evDay = document.getElementById('event-day');
         const evTime = document.getElementById('event-time');
-        console.log(evName.value, evDay.value, evTime.value);
+        const evMembers = document.getElementById('selector-header')
+        console.log(evName.value, evDay.value.substr(0, 3), evTime.value, evMembers.value);
+        console.log(users);
+        console.log(headerData);
+        console.log(headerData.indexOf(headerData.find(day => headerData[day] === 'Mon')));
+        console.log(headerData.indexOf(headerData.find(day => headerData[day] === evDay.value.substr(0, 3))));
+        console.log(users[0].data[headerData.indexOf(headerData.find(day => headerData[day] === evDay.value.substr(0, 3)))]);
+        if (users[0].data[headerData.indexOf(headerData.find(day => headerData[day] === evDay.value.substr(0, 3)))][timeSlots.indexOf(timeSlots.find(time => timeSlots[time] === evTime.value))] !== ''){
+            console.log('Slot is already busy!');
+        }
     }
 
 

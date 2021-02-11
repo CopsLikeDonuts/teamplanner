@@ -1,8 +1,11 @@
-
-
 #content {
     margin: 0 auto;
     width: 1000px;
+}
+
+#team{
+    height: 30px;
+    width: 80px;
 }
 
 #header {
@@ -213,8 +216,7 @@ tr, th, td {
   }
 
   .select-box select {
-    
-    width: 100%;
+    width: 120px;
     font-weight: bold;
   }
   
@@ -236,7 +238,7 @@ tr, th, td {
     width: 120px;
   }
   
-  #checkboxes label {
+  #checkboxes div {
     display: block;
     font-size: 15px;
   }
@@ -244,7 +246,7 @@ tr, th, td {
     margin: 0;
   }
   
-  #checkboxes label:hover {
+  #checkboxes div:hover {
     background-color: #1e90ff;
   }
 
